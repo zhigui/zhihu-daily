@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>知乎日报</title>
+  <meta name="apple-touch-fullscreen" content="yes"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(57px).png" />
+  <link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(72px).png" sizes="72x72" />
+  <link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(76px).png" sizes="76x76" />
+  <link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(114px).png" sizes="114x114" />
+  <link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(120px).png" sizes="120x120" />
+  <link rel="apple-touch-icon-precomposed" href="http://static.zhihu.com/static/img/ios/zhihu(152px).png" sizes="152x152" />
+  <meta name="browsermode" content="application"/>
+  <link rel="stylesheet" type="text/css" href="css/smoothie.min.css">
+  <link rel="stylesheet" type="text/css" href="css/transition.css">
+  <link rel="stylesheet" type="text/css" href="http://news.at.zhihu.com/css/news_qa.auto.css">
+
+  <style>
+    .sm-page{
+      background-color: #fff;
+    }
+    #detail-view{
+      background-color: #fff;
+    }
+    .headline{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="sm-page" data-page="home" >
+    <div class="sm-topbar blue">
+
+      <div class="title">知乎日报</div>
+    </div>
+    <div class="sm-content">
+      <div class="sm-list">        
+        <a class="item  item-img-left" v-repeat="list.stories||[]"   href="#paper/{{id}}" >
+          <img    v-attr="src:images" >
+          <h2>{{title}}</h2> 
+        </a>
+      </div>
+      <div v-if="loading">
+        <div class="sm-text-center sm-padding-m"><span class="sm-loading"></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="sm-page" id="detail-view" data-page="detail">
+    <div class="sm-topbar blue">
+      <a href="javascript:window.history.back()" class="sm-btn sm-left"><i class="sm-icon-arrow-left7"></i> 返回</a>
+      <div class="title">知乎日报</div>
+    </div>
+    <div class="sm-content">
+      <div v-if="loading">
+        <div class="sm-text-center sm-padding-m"><span class="sm-loading"></span></div>
+      </div>
+      <div style="background:url({{content.image||'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='}}) center no-repeat; background-size:cover; height:200px;"></div>
+      <div  class="sm-text-m"  v-html="content.body">  
+      </div>
+    </div>
+  </div>
+  <script src="js/vue.js"></script>
+  <script src="js/smoothie.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/ajax.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
